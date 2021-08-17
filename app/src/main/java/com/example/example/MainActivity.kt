@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ActionMenuView
+import android.widget.Button
 import android.widget.TextView
 import com.example.example.databinding.ActivityMainBinding
 import org.w3c.dom.Text
@@ -20,6 +21,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
     }
+
+    fun addChar (view: View) {
+        var clickedButton: Button = view as Button
+        binding.ResultField.setText(binding.ResultField.text.toString()+clickedButton.text)
+    }
+
+    fun clickProcent(view: View){
+
+    }
+
+
 
 
 }

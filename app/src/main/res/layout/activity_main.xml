@@ -5,6 +5,7 @@
     android:id="@+id/ConstrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="addChar"
     tools:context=".MainActivity">
 
     <TableLayout
@@ -15,26 +16,17 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/txtCondition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="4"
-                android:text="TextView" />
-        </TableRow>
+            android:layout_height="match_parent" />
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txtEnter"
+                android:id="@+id/ResultField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="4"
-                android:text="TextView" />
+                android:layout_span="4" />
         </TableRow>
 
         <TableRow
@@ -55,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:onClick="clickProcent"
                 android:text="%"
                 android:textColor="#000000"
                 app:backgroundTint="#C3C3C3" />
@@ -64,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
+                android:onClick="addChar"
                 android:text="/"
                 app:backgroundTint="#FFAB00" />
         </TableRow>
@@ -76,6 +70,7 @@
                 android:id="@+id/btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="1"
                 app:backgroundTint="#3C3C3C" />
 
@@ -83,6 +78,7 @@
                 android:id="@+id/btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="2"
                 app:backgroundTint="#3C3C3C" />
 
@@ -90,6 +86,7 @@
                 android:id="@+id/btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="3"
                 app:backgroundTint="#3C3C3C" />
 
@@ -97,6 +94,7 @@
                 android:id="@+id/btnSum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="+"
                 app:backgroundTint="#FFAB00" />
 
@@ -110,6 +108,7 @@
                 android:id="@+id/btn4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="4"
                 app:backgroundTint="#3C3C3C" />
 
@@ -117,6 +116,7 @@
                 android:id="@+id/btn5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="5"
                 app:backgroundTint="#3C3C3C" />
 
@@ -124,6 +124,7 @@
                 android:id="@+id/btn6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="6"
                 app:backgroundTint="#3C3C3C" />
 
@@ -131,6 +132,7 @@
                 android:id="@+id/btnSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="-"
                 app:backgroundTint="#FFAB00" />
         </TableRow>
@@ -143,6 +145,7 @@
                 android:id="@+id/btn7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="7"
                 app:backgroundTint="#3C3C3C" />
 
@@ -150,6 +153,7 @@
                 android:id="@+id/btn8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="8"
                 app:backgroundTint="#3C3C3C" />
 
@@ -164,6 +168,7 @@
                 android:id="@+id/btnMul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="x"
                 app:backgroundTint="#FFAB00" />
         </TableRow>
@@ -177,6 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="2"
+                android:onClick="addChar"
                 android:text="0"
                 app:backgroundTint="#3C3C3C" />
 
@@ -185,6 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
+                android:onClick="addChar"
                 android:text=","
                 app:backgroundTint="#3C3C3C" />
 
