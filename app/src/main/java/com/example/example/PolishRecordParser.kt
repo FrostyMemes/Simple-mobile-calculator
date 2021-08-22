@@ -18,129 +18,55 @@ class PolishRecordParser(function: String) {
     private fun getPolishRecord(function: String) {
         var numCombination: String?
         var lastSigh: Boolean = false
+        var tokenPriority: Int
         var i: Int = 0
         while (i < function.length) {
-            when (function[i]) {
-                '(' -> {
-                    tokens.push("(")
-                    lastSigh = true
-                }
-                ')' -> {
-                    while (tokens.peek() != "(") {
-                        result.add(tokens.peek())
+            if (!numbers.contains(function[i].toString()))
+            {
+                tokenPriority = getPriority(function[i].toString())
+                when (getPriority(function[i].toString())){
+                    4->{
+                        while (tokens.peek() != "(") {
+                            result.add(tokens.peek())
+                            tokens.pop()
+                        }
                         tokens.pop()
                     }
-                    tokens.pop()
-                }
-                '*' -> {
-                    if (!tokens.isEmpty()) {
-                        if (getPriority(tokens.peek()) > 1) {
-                            do {
-                                result.add(tokens.peek())
-                                tokens.pop()
-                                if (tokens.isEmpty())
-                                    break
-
-                            } while (getPriority(tokens.peek()) > 1)
-                        }
-                    }
-                    tokens.push("*")
-                    lastSigh = true
-                }
-                '/' -> {
-                    if (!tokens.isEmpty()) {
-                        if (getPriority(tokens.peek()) > 1) {
-                            do {
-                                result.add(tokens.peek())
-                                tokens.pop()
-                                if (tokens.isEmpty())
-                                    break
-
-                            } while (getPriority(tokens.peek()) > 1)
-                        }
-                    }
-                    tokens.push("/")
-                    lastSigh = true
-                }
-                '+' -> {
-                    if (!tokens.isEmpty()) {
-                        if (getPriority(tokens.peek()) > 0) {
-                            do {
-                                result.add(tokens.peek())
-                                tokens.pop()
-                                if (tokens.isEmpty())
-                                    break
-                            } while (getPriority(tokens.peek()) > 0)
-                        }
-                    }
-                    tokens.push("+")
-                    lastSigh = true
-                }
-
-                '-' -> {
-                    if (i == 0) {
-                        numCombination = ""
-                        numCombination += "-"
-                        i++
-                        do {
-                            numCombination += function[i].toString()
-                            i++
-                            if (i == function.length)
-                                break
-
-                        } while (numbers.contains(function[i].toString()))
-                        i--
-                        result.add(numCombination)
-                        lastSigh = false
-                    } else {
-                        if (lastSigh) {
-                            numCombination = ""
-                            numCombination += "-"
-                            i++
-                            do {
-                                numCombination += function[i].toString()
-                                i++
-                                if (i == function.length)
-                                    break
-
-                            } while (numbers.contains(function[i].toString()))
-                            i--
-                            result.add(numCombination)
-                            lastSigh = false
-                        } else {
-                            if (!tokens.isEmpty()) {
-                                if (getPriority(tokens.peek()) > 0) {
-                                    do {
-                                        result.add(tokens.peek())
-                                        tokens.pop()
-                                        if (tokens.isEmpty())
-                                            break
-
-                                    } while (getPriority(tokens.peek()) > 0)
-                                }
+                    in 1..3->{
+                        if (!tokens.isEmpty()) {
+                            if (getPriority(tokens.peek()) > 0) {
+                                do {
+                                    result.add(tokens.peek())
+                                    tokens.pop()
+                                    if (tokens.isEmpty())
+                                        break
+                                } while (getPriority(tokens.peek()) > tokenPriority)
                             }
-                            tokens.push("-")
-                            lastSigh = true
                         }
+                        tokens.push(function[i].toString())
+                        lastSigh = true
                     }
-                }
-                else -> {
-                    if (numbers.contains(function[i].toString())) {
-                        numCombination = ""
-                        do {
-                            numCombination += function[i].toString()
-                            i++
-                            if (i == function.length)
-                                break
-                        } while (numbers.contains(function[i].toString()))
-                        i--
-                        result.add(numCombination)
-                        lastSigh = false
+                    0->{
+                        tokens.push("(")
+                        lastSigh = true
                     }
                 }
             }
+            else{
+                numCombination = ""
+                do {
+                    numCombination += function[i].toString()
+                    i++
+                    if (i == function.length)
+                        break
+                } while (numbers.contains(function[i].toString()))
+                i--
+                result.add(numCombination)
+                lastSigh = false
+            }
             i++
         }
+
         while (tokens.isNotEmpty()) {
             result.add(tokens.pop())
         }
@@ -148,6 +74,7 @@ class PolishRecordParser(function: String) {
 
     private fun getPriority(token: String): Int {
         when (token) {
+            ")" -> return 4
             "^" -> return 3
             "*" -> return 2
             "/" -> return 2
@@ -155,7 +82,7 @@ class PolishRecordParser(function: String) {
             "-" -> return 1
             "(" -> return 0
         }
-        return 0
+        return -1
     }
 
     fun printPolishRecord() {
@@ -164,3 +91,4 @@ class PolishRecordParser(function: String) {
     }
 
 }
+
