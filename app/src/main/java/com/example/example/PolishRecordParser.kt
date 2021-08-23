@@ -21,10 +21,10 @@ class PolishRecordParser(function: String) {
         var tokenPriority: Int
         var i: Int = 0
         while (i < function.length) {
-            if (!numbers.contains(function[i].toString()))
+            if (!numbers.contains(function[i].toString()) && !lastSigh)
             {
                 tokenPriority = getPriority(function[i].toString())
-                when (getPriority(function[i].toString())){
+                when (tokenPriority){
                     4->{
                         while (tokens.peek() != "(") {
                             result.add(tokens.peek())
@@ -34,7 +34,7 @@ class PolishRecordParser(function: String) {
                     }
                     in 1..3->{
                         if (!tokens.isEmpty()) {
-                            if (getPriority(tokens.peek()) > 0) {
+                            if (getPriority(tokens.peek()) > tokenPriority) {
                                 do {
                                     result.add(tokens.peek())
                                     tokens.pop()
@@ -44,7 +44,6 @@ class PolishRecordParser(function: String) {
                             }
                         }
                         tokens.push(function[i].toString())
-                        lastSigh = true
                     }
                     0->{
                         tokens.push("(")
