@@ -30,8 +30,13 @@ class MainActivity : AppCompatActivity() {
     fun clickProcent(view: View){
 
     }
+    fun clickResult(view: View){
+        var calculator = PolishRecordParser(binding.ResultField.text.toString())
+        binding.ResultField.setText(calculator.solve().toString())
+    }
 
-
-
+    fun clickClear(view: View){
+        binding.ResultField.text = ""
+    }
 
 }

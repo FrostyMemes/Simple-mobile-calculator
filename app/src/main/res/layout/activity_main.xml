@@ -37,6 +37,7 @@
                 android:id="@+id/btnClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="clickClear"
                 android:text="C"
                 android:textColor="#000000"
                 app:backgroundTint="#C3C3C3"
@@ -52,6 +53,7 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="addChar"
                     android:text="("
                     android:textColor="#000000"
                     app:backgroundTint="#C3C3C3"
@@ -62,6 +64,7 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="addChar"
                     android:text=")"
                     android:textColor="#000000"
                     app:backgroundTint="#C3C3C3"
@@ -188,6 +191,7 @@
                 android:id="@+id/btn9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="addChar"
                 android:text="9"
                 app:backgroundTint="#3C3C3C" />
 
@@ -196,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="addChar"
-                android:text="x"
+                android:text="*"
                 app:backgroundTint="#FFAB00" />
         </TableRow>
 
@@ -219,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:onClick="addChar"
-                android:text=","
+                android:text="."
                 app:backgroundTint="#3C3C3C" />
 
             <Button
@@ -227,6 +231,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="3"
+                android:onClick="clickResult"
                 android:text="="
                 app:backgroundTint="#FFAB00" />
 
