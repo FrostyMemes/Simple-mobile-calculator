@@ -24,19 +24,19 @@ class MainActivity : AppCompatActivity() {
 
     fun addChar (view: View) {
         var clickedButton: Button = view as Button
-        binding.ResultField.setText(binding.ResultField.text.toString()+clickedButton.text)
+        binding.resultField.setText(binding.resultField.text.toString()+clickedButton.text)
     }
 
     fun clickProcent(view: View){
 
     }
     fun clickResult(view: View){
-        var calculator = PolishRecordParser(binding.ResultField.text.toString())
-        binding.ResultField.setText(calculator.solve().toString())
+        var calculator = PolishRecordParser(binding.resultField.text.toString())
+        binding.resultField.setText(calculator.solve().toString())
     }
 
     fun clickClear(view: View){
-        binding.ResultField.text = ""
+        binding.resultField.text = ""
     }
 
 }
